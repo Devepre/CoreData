@@ -1,6 +1,9 @@
 #import "MasterViewController.h"
+#import "DataDelegate.h"
 
 @interface MasterViewController ()
+
+@property (weak, nonatomic) id<DataDelegate> delegate;
 
 @property (strong, nonatomic) NSArray *data;
 
