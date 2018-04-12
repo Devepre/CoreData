@@ -1,9 +1,6 @@
 #import "MasterViewController.h"
-#import "DataDelegate.h"
 
 @interface MasterViewController ()
-
-@property (weak, nonatomic) id<DataDelegate> delegate;
 
 @property (strong, nonatomic) NSArray *data;
 
@@ -19,8 +16,7 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    
+
     self.data = @[@"string One", @"String Two", @"String Three"];
 }
 
@@ -47,6 +43,12 @@
     cell.textLabel.text = [self.data objectAtIndex:indexPath.row];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *item = [self.data objectAtIndex:indexPath.row];
+    
+    [self.delegate dataSelected:item];
 }
 
 /*

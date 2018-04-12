@@ -2,6 +2,6 @@
 
 @protocol DataDelegate <NSObject>
 
-- (NSString *)dataSelected:(NSString *)data;
+- (void)dataSelected:(NSObject *)data;
 
 @end

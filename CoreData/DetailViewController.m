@@ -1,4 +1,3 @@
-
 #import "DetailViewController.h"
 
 @interface DetailViewController ()
@@ -17,8 +16,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-
 /*
 #pragma mark - Navigation
 
@@ -28,5 +25,12 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - Delegate method
+
+- (void)dataSelected:(NSObject *)data {
+    NSLog(@"Received: %@", data);
+}
+
 
 @end

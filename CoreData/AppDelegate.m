@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "MasterViewController.h"
+#import "DetailViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +19,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
+    UINavigationController *leftNavigationController = [splitViewController.viewControllers firstObject];
+    MasterViewController *masterViewController = (MasterViewController *)leftNavigationController.topViewController;
+    DetailViewController *detailViewController = (DetailViewController *)[splitViewController.viewControllers lastObject];
+    
+    masterViewController.delegate = detailViewController;
     
     return YES;
 }
