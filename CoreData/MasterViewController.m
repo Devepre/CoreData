@@ -1,4 +1,5 @@
 #import "MasterViewController.h"
+#import "DetailViewController.h"
 
 @interface MasterViewController ()
 
@@ -48,7 +49,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *item = [self.data objectAtIndex:indexPath.row];
     
-    [self.delegate dataSelected:item];
+    if ([self.delegate isKindOfClass:[DetailViewController class]]) {
+        DetailViewController *detailViewController = (DetailViewController *)self.delegate;
+        [self.splitViewController showDetailViewController:detailViewController sender:nil];
+        [self.delegate dataSelected:item];
+    }
+    
 }
 
 /*
