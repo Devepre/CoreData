@@ -21,11 +21,17 @@
     // Override point for customization after application launch.
     
     UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
+    
     UINavigationController *leftNavigationController = [splitViewController.viewControllers firstObject];
     MasterViewController *masterViewController = (MasterViewController *)leftNavigationController.topViewController;
-    DetailViewController *detailViewController = (DetailViewController *)[splitViewController.viewControllers lastObject];
+    
+    UINavigationController *rightNavigationController = [splitViewController.viewControllers lastObject];
+    DetailViewController *detailViewController = (DetailViewController *)rightNavigationController.topViewController;
     
     masterViewController.delegate = detailViewController;
+    
+    detailViewController.navigationItem.leftItemsSupplementBackButton = true;
+    detailViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem;
     
     return YES;
 }

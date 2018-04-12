@@ -51,7 +51,7 @@
     
     if ([self.delegate isKindOfClass:[DetailViewController class]]) {
         DetailViewController *detailViewController = (DetailViewController *)self.delegate;
-        [self.splitViewController showDetailViewController:detailViewController sender:nil];
+        [self.splitViewController showDetailViewController:[detailViewController navigationController] sender:nil];
         [self.delegate dataSelected:item];
     }
     
