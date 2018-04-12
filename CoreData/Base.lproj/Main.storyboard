@@ -93,10 +93,10 @@
             </objects>
             <point key="canvasLocation" x="-86" y="-619"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Adding-->
         <scene sceneID="ymU-fF-9E2">
             <objects>
-                <splitViewController id="uuO-W9-hon" sceneMemberID="viewController">
+                <splitViewController id="uuO-W9-hon" customClass="Adding" sceneMemberID="viewController">
                     <connections>
                         <segue destination="bcU-q1-yUJ" kind="relationship" relationship="masterViewController" id="iL6-na-1E4"/>
                         <segue destination="viP-gy-I9l" kind="relationship" relationship="detailViewController" id="7Ac-0u-IpW"/>

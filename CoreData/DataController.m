@@ -2,12 +2,12 @@
 
 @implementation DataController
 
-- (instancetype)initWithCompletionBlock:(void(^)(void))completionBlock {
+- (instancetype)initWithCompletionBlock:(void(^)(NSManagedObjectContext *context))completionBlock {
     self = [super init];
     if (self) {
         [self initializePersistentContainer];
         
-        completionBlock();
+        completionBlock(self.persistentContainer.viewContext);
     }
     return self;
 }

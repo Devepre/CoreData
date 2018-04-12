@@ -5,7 +5,7 @@
 
 @property (readonly, strong) NSPersistentContainer *persistentContainer;
 
-- (instancetype)initWithCompletionBlock:(void(^)(void))completionBlock;
+- (instancetype)initWithCompletionBlock:(void(^)(NSManagedObjectContext *))completionBlock;
 - (void)saveContext;
 
 @end
