@@ -7,40 +7,39 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Courses-->
-        <scene sceneID="byx-jP-ZyR">
+        <scene sceneID="dN1-wY-znL">
             <objects>
-                <viewController id="xgf-0v-qKt" customClass="DetailViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ZTq-Tq-FSB">
+                <tableViewController id="gax-sD-T2u" customClass="DetailViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="APH-7s-XMc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MdL-Vc-FNY">
-                                <rect key="frame" x="166" y="323" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="MdL-Vc-FNY" firstAttribute="centerY" secondItem="ZTq-Tq-FSB" secondAttribute="centerY" id="LmH-HW-ZZW"/>
-                            <constraint firstItem="MdL-Vc-FNY" firstAttribute="centerX" secondItem="ZTq-Tq-FSB" secondAttribute="centerX" id="Nba-J4-kKQ"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="9yo-HE-xMw"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Courses" id="FiQ-pC-8GF"/>
-                    <connections>
-                        <outlet property="nameLabel" destination="MdL-Vc-FNY" id="mG1-kd-XB4"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aEI-gG-qmV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Efc-KR-Yx5">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Efc-KR-Yx5" id="N8w-2a-v40">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="gax-sD-T2u" id="yJu-4R-KaK"/>
+                            <outlet property="delegate" destination="gax-sD-T2u" id="Kp6-lV-qPb"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Courses" id="qSU-b1-m2u">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Bzu-rK-w6g"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BTb-4E-VIL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="852" y="166"/>
+            <point key="canvasLocation" x="865" y="166"/>
         </scene>
         <!--Universities-->
         <scene sceneID="hiz-CH-MWN">
@@ -193,7 +192,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="xgf-0v-qKt" kind="relationship" relationship="rootViewController" id="Cr7-Ln-YRf"/>
+                        <segue destination="gax-sD-T2u" kind="relationship" relationship="rootViewController" id="nCn-WL-0Sw"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tfi-sX-xHR" userLabel="First Responder" sceneMemberID="firstResponder"/>
