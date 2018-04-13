@@ -30,6 +30,7 @@
 
 - (void)dataSelected:(NSObject *)data {
     NSLog(@"Received: %@", data);
+    self.nameLabel.text = [data valueForKey:@"name"];
 }
 
 

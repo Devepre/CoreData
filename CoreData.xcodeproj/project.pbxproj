@@ -20,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE4557CB20810F730033E1EA /* DataDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataDelegate.h; sourceTree = "<group>"; };
 		CE57B122207E3B48008E4700 /* CoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE57B125207E3B48008E4700 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CE57B126207E3B48008E4700 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -33,7 +34,6 @@
 		CE57B167207E4F91008E4700 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		CE57B169207E53EE008E4700 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		CE57B16A207E53EE008E4700 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		CE57B16C207E5717008E4700 /* DataDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataDelegate.h; sourceTree = "<group>"; };
 		CE57B182207F9FF2008E4700 /* DataController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataController.h; sourceTree = "<group>"; };
 		CE57B183207F9FF2008E4700 /* DataController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataController.m; sourceTree = "<group>"; };
 		CE57B1AA2080EDF5008E4700 /* ChangingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangingViewController.h; sourceTree = "<group>"; };
@@ -70,11 +70,11 @@
 		CE57B124207E3B48008E4700 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				CE4557CB20810F730033E1EA /* DataDelegate.h */,
 				CE57B1AA2080EDF5008E4700 /* ChangingViewController.h */,
 				CE57B1AB2080EDF5008E4700 /* ChangingViewController.m */,
 				CE57B182207F9FF2008E4700 /* DataController.h */,
 				CE57B183207F9FF2008E4700 /* DataController.m */,
-				CE57B16C207E5717008E4700 /* DataDelegate.h */,
 				CE57B169207E53EE008E4700 /* DetailViewController.h */,
 				CE57B16A207E53EE008E4700 /* DetailViewController.m */,
 				CE57B166207E4F91008E4700 /* MasterViewController.h */,

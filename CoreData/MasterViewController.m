@@ -71,14 +71,13 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    NSString *item = [self.data objectAtIndex:indexPath.row];
-    NSString *item = @"temp";
+    NSManagedObject *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     Class expectedClass = [DetailViewController class];
     if ([self.delegate isKindOfClass:expectedClass]) {
         DetailViewController *detailViewController = (DetailViewController *)self.delegate;
         [self.splitViewController showDetailViewController:[detailViewController navigationController] sender:nil];
-        [self.delegate dataSelected:item];
+        [self.delegate dataSelected:selectedObject];
     } else {
         NSLog(@"Wrong destination delegates Class: %@. Expected Class is %@", [self.delegate class], expectedClass);
     }

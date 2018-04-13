@@ -34,6 +34,9 @@
                         <viewLayoutGuide key="safeArea" id="9yo-HE-xMw"/>
                     </view>
                     <navigationItem key="navigationItem" title="Courses" id="FiQ-pC-8GF"/>
+                    <connections>
+                        <outlet property="nameLabel" destination="MdL-Vc-FNY" id="mG1-kd-XB4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aEI-gG-qmV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
