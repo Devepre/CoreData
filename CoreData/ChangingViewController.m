@@ -1,10 +1,8 @@
 #import "ChangingViewController.h"
 #import "DataController.h"
 
-#import <CoreData/CoreData.h>
-#import "CoreData+CoreDataModel.h"
-
 #define OBJECT_CLASS UniversityMO
+#define OBJECT_CLASS_STRING @"University"
 #define OBJECT_KEY @"name"
 #define BATCH_SIZE 20
 
@@ -39,18 +37,37 @@
 #pragma mark - Additional Methods
 
 - (void)insertNewObjectWithName:(NSString *)name {
-    OBJECT_CLASS *newManagedObject = [[OBJECT_CLASS alloc] initWithContext:self.managedObjectContext];
-    
-    newManagedObject.name = name;
-    
-    // Save the context
-    NSError *error = nil;
-    if (![self.managedObjectContext save:&error]) {
-        NSLog(@"Unresolved error %@, %@", error, error.userInfo);
-        abort();
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]
+                                    initWithEntityName:OBJECT_CLASS_STRING];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name = %@", name];
+    fetchRequest.predicate = predicate;
+    NSError *requestError = nil;
+    NSArray *objects = [self.managedObjectContext executeFetchRequest: fetchRequest
+                                                                error:&requestError];
+    if ([objects count] > 0){
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                             message:[NSString stringWithFormat:@"University %@ already exist", name]
+                                      preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK"
+                                                     style:UIAlertActionStyleDefault
+                                                   handler:nil];
+        [alert addAction:ok];
+        [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        OBJECT_CLASS *newManagedObject = [[OBJECT_CLASS alloc] initWithContext:self.managedObjectContext];
+        
+        newManagedObject.name = name;
+        
+        // Save the context
+        NSError *error = nil;
+        if (![self.managedObjectContext save:&error]) {
+            NSLog(@"Unresolved error %@, %@", error, error.userInfo);
+            abort();
+        }
+        
+        [self.navigationController popViewControllerAnimated:YES];
     }
 
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

@@ -3,6 +3,7 @@
 #import "DataController.h"
 
 #define OBJECT_CLASS UniversityMO
+#define OBJECT_CLASS_STRING @"University"
 #define OBJECT_KEY @"name"
 #define BATCH_SIZE 20
 
