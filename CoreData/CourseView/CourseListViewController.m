@@ -1,58 +1,42 @@
-#import "MasterViewController.h"
 #import "CourseListViewController.h"
 #import "DataController.h"
+#import "CoreData+CoreDataModel.h"
+#import "CourseChangingController.h"
+#import "CourseDetailsViewController.h"
 
-#define OBJECT_CLASS UniversityMO
-#define OBJECT_CLASS_STRING @"University"
+#define OBJECT_CLASS CourseMO
+#define OBJECT_CLASS_STRING @"Course"
 #define OBJECT_KEY @"name"
 #define BATCH_SIZE 20
+#define CACHE_NAME @"Master"
 
-@interface MasterViewController ()
+@interface CourseListViewController ()
+
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSFetchedResultsController<NSManagedObject *> *fetchedResultsController;
+@property (nonatomic, strong) NSIndexPath *indexPath;
+@property (nonatomic, strong) NSManagedObject *currentObject;
 
 @end
 
-@implementation MasterViewController
+@implementation CourseListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
     self.managedObjectContext = [DataController sharedInstance].managedObjectContext;
 }
 
-#pragma mark - Additional Methods
-- (void)insertNewObject:(id)sender {
-    OBJECT_CLASS *newManagedObject = [[OBJECT_CLASS alloc] initWithContext:self.managedObjectContext];
-    
-    newManagedObject.name = @"Random";
-    
-    // Save the context
-    NSError *error = nil;
-    if (![self.managedObjectContext save:&error]) {
-        NSLog(@"Unresolved error %@, %@", error, error.userInfo);
-        abort();
-    }
-    
-    //    // Version 2
-    //    NSManagedObject *person = [NSEntityDescription insertNewObjectForEntityForName:@"Teacher"
-    //                                                            inManagedObjectContext:self.managedObjectContext];
-    //    [person setValue:@"TeacherSurname" forKey:@"name"];
-    //    { NSError *error = nil;
-    //        if ([[self managedObjectContext] save:&error] == NO) {
-    //            NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], error.userInfo);
-    //        }
-    //    }
-}
+#pragma mark - Delegate method
 
-#pragma mark - Actions
+- (void)dataSelected:(NSObject *)data {
+    self.currentObject = (NSManagedObject *)data;
+}
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-     return [[self.fetchedResultsController sections] count];
+    return [[self.fetchedResultsController sections] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -70,17 +54,8 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSManagedObject *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    
-    Class expectedClass = [CourseListViewController class];
-    if ([self.delegate isKindOfClass:expectedClass]) {
-        CourseListViewController *detailViewController = (CourseListViewController *)self.delegate;
-        [self.splitViewController showDetailViewController:[detailViewController navigationController] sender:nil];
-        [self.delegate dataSelected:selectedObject];
-    } else {
-        NSLog(@"Wrong destination delegates Class: %@. Expected Class is %@", [self.delegate class], expectedClass);
-    }
+- (void)configureCell:(UITableViewCell *)cell withEvent:(NSManagedObject *)event {
+    cell.textLabel.text = [event valueForKey:OBJECT_KEY];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -88,52 +63,41 @@
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        // Delete the row from the data source
-//        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-//    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-//        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-//    }
-    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
         [context deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
         
         NSError *error = nil;
         if (![context save:&error]) {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog(@"Unresolved error %@, %@", error, error.userInfo);
             abort();
         }
     }
 }
 
-- (void)configureCell:(UITableViewCell *)cell withEvent:(NSManagedObject *)event {
-    cell.textLabel.text = [event valueForKey:OBJECT_KEY];
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.indexPath = indexPath;
+    return indexPath;
 }
-
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 
 #pragma mark - Navigation
 
+- (void)viewWillAppear:(BOOL)animated {
+    self.fetchedResultsController = nil;
+    [NSFetchedResultsController deleteCacheWithName:CACHE_NAME];
+    [self.tableView reloadData];
+    
+    [super viewWillAppear:animated];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"changingSegue"]) {
-        NSLog(@"Adding");
+        CourseChangingController *vc = segue.destinationViewController;
+        vc.currentObject = self.currentObject;
+    } else if ([segue.identifier isEqualToString:@"detailSegue"]) {
+        CourseDetailsViewController *vc = segue.destinationViewController;
+        NSManagedObject *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.indexPath];
+        vc.currentObject = selectedObject;
     }
 }
 
@@ -143,28 +107,29 @@
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;
     }
-
+    
     NSFetchRequest<NSManagedObject *> *fetchRequest = OBJECT_CLASS.fetchRequest;
     [fetchRequest setFetchBatchSize:BATCH_SIZE];
-
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"belongsToUniversity = %@ ", self.currentObject];
+    fetchRequest.predicate = predicate;
+    
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:OBJECT_KEY ascending:YES];
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
-
-    // Edit the section name key path and cache name if appropriate.
-    // nil for section name key path means "no sections".
+    
     NSFetchedResultsController<NSManagedObject *> *aFetchedResultsController = [[NSFetchedResultsController alloc]
                                                                                 initWithFetchRequest:fetchRequest
                                                                                 managedObjectContext:self.managedObjectContext
                                                                                 sectionNameKeyPath:nil
-                                                                                cacheName:@"Master"];
+                                                                                cacheName:CACHE_NAME];
     aFetchedResultsController.delegate = self;
-
+    
     NSError *error = nil;
     if (![aFetchedResultsController performFetch:&error]) {
         NSLog(@"Unresolved error %@, %@", error, error.userInfo);
         abort();
     }
-
+    
     _fetchedResultsController = aFetchedResultsController;
     return _fetchedResultsController;
 }

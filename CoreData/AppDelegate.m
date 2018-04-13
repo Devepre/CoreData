@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MasterViewController.h"
-#import "DetailViewController.h"
+#import "CourseListViewController.h"
 #import "DataController.h"
 
 @interface AppDelegate () <UISplitViewControllerDelegate>
@@ -25,7 +25,7 @@
     splitViewController.delegate = self;
     
     UINavigationController *rightNavigationController = [splitViewController.viewControllers lastObject];
-    DetailViewController *detailViewController = (DetailViewController *)rightNavigationController.topViewController;
+    CourseListViewController *detailViewController = (CourseListViewController *)rightNavigationController.topViewController;
     detailViewController.navigationItem.leftItemsSupplementBackButton = true;
     detailViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem;
     
@@ -71,7 +71,7 @@
 #pragma mark - Split view
 
 - (BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController {
-    if ([secondaryViewController isKindOfClass:[UINavigationController class]] && [[(UINavigationController *)secondaryViewController topViewController] isKindOfClass:[DetailViewController class]] /*&& ([(DetailViewController *)[(UINavigationController *)secondaryViewController topViewController] detailItem] == nil)*/) {
+    if ([secondaryViewController isKindOfClass:[UINavigationController class]] && [[(UINavigationController *)secondaryViewController topViewController] isKindOfClass:[CourseListViewController class]] /*&& ([(DetailViewController *)[(UINavigationController *)secondaryViewController topViewController] detailItem] == nil)*/) {
         // Return YES to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
         return YES;
     } else {

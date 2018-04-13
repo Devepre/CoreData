@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24476C47208142B8006465EC /* CourseChangingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24476C46208142B8006465EC /* CourseChangingController.m */; };
+		24476C4A20815619006465EC /* CourseDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24476C4920815619006465EC /* CourseDetailsViewController.m */; };
 		CE57B127207E3B48008E4700 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE57B126207E3B48008E4700 /* AppDelegate.m */; };
 		CE57B12D207E3B49008E4700 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE57B12B207E3B49008E4700 /* Main.storyboard */; };
 		CE57B130207E3B49008E4700 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE57B12E207E3B49008E4700 /* CoreData.xcdatamodeld */; };
@@ -14,12 +16,16 @@
 		CE57B135207E3B4B008E4700 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE57B133207E3B4B008E4700 /* LaunchScreen.storyboard */; };
 		CE57B138207E3B4B008E4700 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE57B137207E3B4B008E4700 /* main.m */; };
 		CE57B168207E4F91008E4700 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE57B167207E4F91008E4700 /* MasterViewController.m */; };
-		CE57B16B207E53EE008E4700 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE57B16A207E53EE008E4700 /* DetailViewController.m */; };
+		CE57B16B207E53EE008E4700 /* CourseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE57B16A207E53EE008E4700 /* CourseListViewController.m */; };
 		CE57B184207F9FF2008E4700 /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE57B183207F9FF2008E4700 /* DataController.m */; };
 		CE57B1AC2080EDF5008E4700 /* ChangingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE57B1AB2080EDF5008E4700 /* ChangingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		24476C45208142B8006465EC /* CourseChangingController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseChangingController.h; sourceTree = "<group>"; };
+		24476C46208142B8006465EC /* CourseChangingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseChangingController.m; sourceTree = "<group>"; };
+		24476C4820815619006465EC /* CourseDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseDetailsViewController.h; sourceTree = "<group>"; };
+		24476C4920815619006465EC /* CourseDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseDetailsViewController.m; sourceTree = "<group>"; };
 		CE4557CB20810F730033E1EA /* DataDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataDelegate.h; sourceTree = "<group>"; };
 		CE57B122207E3B48008E4700 /* CoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE57B125207E3B48008E4700 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -32,8 +38,8 @@
 		CE57B137207E3B4B008E4700 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CE57B166207E4F91008E4700 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		CE57B167207E4F91008E4700 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		CE57B169207E53EE008E4700 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		CE57B16A207E53EE008E4700 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		CE57B169207E53EE008E4700 /* CourseListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseListViewController.h; sourceTree = "<group>"; };
+		CE57B16A207E53EE008E4700 /* CourseListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseListViewController.m; sourceTree = "<group>"; };
 		CE57B182207F9FF2008E4700 /* DataController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataController.h; sourceTree = "<group>"; };
 		CE57B183207F9FF2008E4700 /* DataController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataController.m; sourceTree = "<group>"; };
 		CE57B1AA2080EDF5008E4700 /* ChangingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangingViewController.h; sourceTree = "<group>"; };
@@ -51,6 +57,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24476C4B208160D2006465EC /* CourseView */ = {
+			isa = PBXGroup;
+			children = (
+				24476C45208142B8006465EC /* CourseChangingController.h */,
+				24476C46208142B8006465EC /* CourseChangingController.m */,
+				24476C4820815619006465EC /* CourseDetailsViewController.h */,
+				24476C4920815619006465EC /* CourseDetailsViewController.m */,
+				CE57B169207E53EE008E4700 /* CourseListViewController.h */,
+				CE57B16A207E53EE008E4700 /* CourseListViewController.m */,
+			);
+			path = CourseView;
+			sourceTree = "<group>";
+		};
 		CE57B119207E3B48008E4700 = {
 			isa = PBXGroup;
 			children = (
@@ -75,12 +94,11 @@
 				CE57B1AB2080EDF5008E4700 /* ChangingViewController.m */,
 				CE57B182207F9FF2008E4700 /* DataController.h */,
 				CE57B183207F9FF2008E4700 /* DataController.m */,
-				CE57B169207E53EE008E4700 /* DetailViewController.h */,
-				CE57B16A207E53EE008E4700 /* DetailViewController.m */,
 				CE57B166207E4F91008E4700 /* MasterViewController.h */,
 				CE57B167207E4F91008E4700 /* MasterViewController.m */,
 				CE57B125207E3B48008E4700 /* AppDelegate.h */,
 				CE57B126207E3B48008E4700 /* AppDelegate.m */,
+				24476C4B208160D2006465EC /* CourseView */,
 				CE57B12B207E3B49008E4700 /* Main.storyboard */,
 				CE57B131207E3B4B008E4700 /* Assets.xcassets */,
 				CE57B133207E3B4B008E4700 /* LaunchScreen.storyboard */,
@@ -161,7 +179,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE57B16B207E53EE008E4700 /* DetailViewController.m in Sources */,
+				CE57B16B207E53EE008E4700 /* CourseListViewController.m in Sources */,
+				24476C4A20815619006465EC /* CourseDetailsViewController.m in Sources */,
+				24476C47208142B8006465EC /* CourseChangingController.m in Sources */,
 				CE57B168207E4F91008E4700 /* MasterViewController.m in Sources */,
 				CE57B127207E3B48008E4700 /* AppDelegate.m in Sources */,
 				CE57B138207E3B4B008E4700 /* main.m in Sources */,

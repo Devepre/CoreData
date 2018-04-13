@@ -1,14 +1,17 @@
-#import "DetailViewController.h"
+#import "CourseDetailsViewController.h"
 
-@interface DetailViewController ()
+@interface CourseDetailsViewController ()
 
 @end
 
-@implementation DetailViewController
+@implementation CourseDetailsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.courseNameLabel.text = [self.currentObject valueForKey:@"name"];
+    self.universityNameLabel.text = [self.currentObject valueForKeyPath:@"belongsToUniversity.name"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -25,13 +28,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-#pragma mark - Delegate method
-
-- (void)dataSelected:(NSObject *)data {
-    NSLog(@"Received: %@", data);
-    self.nameLabel.text = [data valueForKey:@"name"];
-}
-
 
 @end

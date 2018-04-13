@@ -3,6 +3,7 @@
     <entity name="Course" representedClassName="CourseMO" syncable="YES" codeGenerationType="class">
         <attribute name="branch" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="belongsToUniversity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="University" inverseName="hasCourse" inverseEntity="University" syncable="YES"/>
         <relationship name="hasStudent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Student" inverseName="onCourse" inverseEntity="Student" syncable="YES"/>
         <relationship name="hasSubject" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Subject" syncable="YES"/>
         <relationship name="leadsBy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teacher" inverseName="leadCourse" inverseEntity="Teacher" syncable="YES"/>
@@ -22,13 +23,13 @@
     </entity>
     <entity name="University" representedClassName="UniversityMO" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="hasCourse" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Course" syncable="YES"/>
+        <relationship name="hasCourse" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Course" inverseName="belongsToUniversity" inverseEntity="Course" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Course" positionX="-470" positionY="-9" width="128" height="133"/>
         <element name="Student" positionX="-461" positionY="207" width="128" height="88"/>
+        <element name="Subject" positionX="-666" positionY="72" width="128" height="58"/>
         <element name="Teacher" positionX="-263" positionY="74" width="128" height="88"/>
-        <element name="Course" positionX="-470" positionY="-0" width="128" height="118"/>
-        <element name="Subject" positionX="-666" positionY="66" width="128" height="58"/>
         <element name="University" positionX="-263" positionY="-54" width="128" height="73"/>
     </elements>
 </model>
