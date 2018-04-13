@@ -16,6 +16,7 @@
 		CE57B168207E4F91008E4700 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE57B167207E4F91008E4700 /* MasterViewController.m */; };
 		CE57B16B207E53EE008E4700 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE57B16A207E53EE008E4700 /* DetailViewController.m */; };
 		CE57B184207F9FF2008E4700 /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE57B183207F9FF2008E4700 /* DataController.m */; };
+		CE57B1AC2080EDF5008E4700 /* ChangingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE57B1AB2080EDF5008E4700 /* ChangingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,8 @@
 		CE57B16C207E5717008E4700 /* DataDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataDelegate.h; sourceTree = "<group>"; };
 		CE57B182207F9FF2008E4700 /* DataController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataController.h; sourceTree = "<group>"; };
 		CE57B183207F9FF2008E4700 /* DataController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataController.m; sourceTree = "<group>"; };
+		CE57B1AA2080EDF5008E4700 /* ChangingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangingViewController.h; sourceTree = "<group>"; };
+		CE57B1AB2080EDF5008E4700 /* ChangingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangingViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,8 @@
 		CE57B124207E3B48008E4700 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				CE57B1AA2080EDF5008E4700 /* ChangingViewController.h */,
+				CE57B1AB2080EDF5008E4700 /* ChangingViewController.m */,
 				CE57B182207F9FF2008E4700 /* DataController.h */,
 				CE57B183207F9FF2008E4700 /* DataController.m */,
 				CE57B16C207E5717008E4700 /* DataDelegate.h */,
@@ -160,6 +165,7 @@
 				CE57B168207E4F91008E4700 /* MasterViewController.m in Sources */,
 				CE57B127207E3B48008E4700 /* AppDelegate.m in Sources */,
 				CE57B138207E3B4B008E4700 /* main.m in Sources */,
+				CE57B1AC2080EDF5008E4700 /* ChangingViewController.m in Sources */,
 				CE57B130207E3B49008E4700 /* CoreData.xcdatamodeld in Sources */,
 				CE57B184207F9FF2008E4700 /* DataController.m in Sources */,
 			);
