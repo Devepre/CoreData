@@ -71,7 +71,13 @@
                             <outlet property="delegate" destination="Rc8-kV-c7v" id="JxM-RW-4zn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="yTT-zt-dP5"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="yTT-zt-dP5">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="8Tn-bz-7xr">
+                            <connections>
+                                <action selector="addItemAction:" destination="Rc8-kV-c7v" id="KPS-KP-0jD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Ik-NL-xGA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
