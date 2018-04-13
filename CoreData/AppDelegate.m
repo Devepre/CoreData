@@ -34,13 +34,8 @@
     
     masterViewController.delegate = detailViewController;
     
-    // Initializing NSPersistentContainer
-    [self setDataController:[[DataController alloc] initWithCompletionBlock:^(NSManagedObjectContext *context) {
-        //Complete user interface initialization
-        NSLog(@"DataController initialized");
-        masterViewController.managedObjectContext = context;
-    }]];
-     
+    self.dataController = [DataController sharedInstance];
+    
     return YES;
 }
 

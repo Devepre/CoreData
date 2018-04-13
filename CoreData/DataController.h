@@ -5,7 +5,9 @@
 
 @property (readonly, strong) NSPersistentContainer *persistentContainer;
 
-- (instancetype)initWithCompletionBlock:(void(^)(NSManagedObjectContext *))completionBlock;
++ (DataController *)sharedInstance;
+
+- (NSManagedObjectContext *)managedObjectContext;
 - (void)saveContext;
 
 @end

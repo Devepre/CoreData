@@ -2,14 +2,20 @@
 
 @implementation DataController
 
-- (instancetype)initWithCompletionBlock:(void(^)(NSManagedObjectContext *context))completionBlock {
-    self = [super init];
-    if (self) {
-        [self initializePersistentContainer];
-        
-        completionBlock(self.persistentContainer.viewContext);
-    }
-    return self;
++ (DataController *)sharedInstance {
+    static DataController *sharedInstance = nil;
+    static dispatch_once_t token;
+    
+    dispatch_once(&token, ^{
+        sharedInstance = [[DataController alloc] init];
+        [sharedInstance initializePersistentContainer];
+    });
+    
+    return sharedInstance;
+}
+
+- (NSManagedObjectContext *)managedObjectContext {
+    return self.persistentContainer.viewContext;
 }
 
 #pragma mark - Core Data stack

@@ -1,5 +1,6 @@
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "DataController.h"
 
 @interface MasterViewController ()
 
@@ -24,6 +25,8 @@
     
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
+    
+    self.managedObjectContext = [DataController sharedInstance].managedObjectContext;
 }
 
 - (void)didReceiveMemoryWarning {
