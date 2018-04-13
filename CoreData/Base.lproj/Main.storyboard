@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Detail View Controller-->
+        <!--Courses-->
         <scene sceneID="byx-jP-ZyR">
             <objects>
                 <viewController id="xgf-0v-qKt" customClass="DetailViewController" sceneMemberID="viewController">
@@ -32,13 +32,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9yo-HE-xMw"/>
                     </view>
-                    <navigationItem key="navigationItem" id="FiQ-pC-8GF"/>
+                    <navigationItem key="navigationItem" title="Courses" id="FiQ-pC-8GF"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aEI-gG-qmV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="852" y="166"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Universities-->
         <scene sceneID="hiz-CH-MWN">
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="Rc8-kV-c7v" customClass="MasterViewController" sceneMemberID="viewController">
@@ -71,7 +71,7 @@
                             <outlet property="delegate" destination="Rc8-kV-c7v" id="JxM-RW-4zn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="yTT-zt-dP5">
+                    <navigationItem key="navigationItem" title="Universities" id="yTT-zt-dP5">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="8Tn-bz-7xr">
                             <connections>
                                 <action selector="addItemAction:" destination="Rc8-kV-c7v" id="KPS-KP-0jD"/>
