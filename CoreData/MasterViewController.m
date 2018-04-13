@@ -2,9 +2,11 @@
 #import "DetailViewController.h"
 #import "DataController.h"
 
-@interface MasterViewController ()
+#define OBJECT_CLASS UniversityMO
+#define OBJECT_KEY @"name"
+#define BATCH_SIZE 20
 
-@property (strong, nonatomic) NSArray *data;
+@interface MasterViewController ()
 
 @end
 
@@ -18,8 +20,6 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-
-    self.data = @[@"string One", @"String Two", @"String Three"];
     
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     
@@ -32,6 +32,30 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Additional Methods
+- (void)insertNewObject:(id)sender {
+    OBJECT_CLASS *newManagedObject = [[OBJECT_CLASS alloc] initWithContext:self.managedObjectContext];
+    
+    newManagedObject.name = @"Random";
+    
+    // Save the context
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, error.userInfo);
+        abort();
+    }
+    
+    //    // Version 2
+    //    NSManagedObject *person = [NSEntityDescription insertNewObjectForEntityForName:@"Teacher"
+    //                                                            inManagedObjectContext:self.managedObjectContext];
+    //    [person setValue:@"TeacherSurname" forKey:@"name"];
+    //    { NSError *error = nil;
+    //        if ([[self managedObjectContext] save:&error] == NO) {
+    //            NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], error.userInfo);
+    //        }
+    //    }
 }
 
 #pragma mark - Table view data source
@@ -49,25 +73,27 @@
     static NSString *identifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
-    NSManagedObject *event = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    [self configureCell:cell withEvent:event];
+    NSManagedObject *managedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    [self configureCell:cell withEvent:managedObject];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *item = [self.data objectAtIndex:indexPath.row];
+//    NSString *item = [self.data objectAtIndex:indexPath.row];
+    NSString *item = @"temp";
     
-    if ([self.delegate isKindOfClass:[DetailViewController class]]) {
+    Class expectedClass = [DetailViewController class];
+    if ([self.delegate isKindOfClass:expectedClass]) {
         DetailViewController *detailViewController = (DetailViewController *)self.delegate;
         [self.splitViewController showDetailViewController:[detailViewController navigationController] sender:nil];
         [self.delegate dataSelected:item];
+    } else {
+        NSLog(@"Wrong destination delegates Class: %@. Expected Class is %@", [self.delegate class], expectedClass);
     }
-    
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
     return YES;
 }
 
@@ -94,7 +120,7 @@
 }
 
 - (void)configureCell:(UITableViewCell *)cell withEvent:(NSManagedObject *)event {
-    cell.textLabel.text = [event valueForKey:@"name"];
+    cell.textLabel.text = [event valueForKey:OBJECT_KEY];
 }
 
 
@@ -122,39 +148,6 @@
 }
 */
 
-#pragma mark - Additional Methods
-- (void)insertNewObject:(id)sender {
-//    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-    NSManagedObjectContext *context = self.managedObjectContext;
-    StudentMO *newStudent = [[StudentMO alloc] initWithContext:context];
-    
-    // If appropriate, configure the new managed object.
-    newStudent.name = @"Random";
-    
-    TeacherMO *newTeacher = [[TeacherMO alloc] initWithContext:context];
-    newTeacher.name = @"Teacher ONe";
-    
-    // Save the context.
-    NSError *error = nil;
-    if (![context save:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        NSLog(@"Unresolved error %@, %@", error, error.userInfo);
-        abort();
-    }
-    
-    
-//    // Version 2
-//    NSManagedObject *person = [NSEntityDescription insertNewObjectForEntityForName:@"Teacher"
-//                                                            inManagedObjectContext:self.managedObjectContext];
-//    [person setValue:@"TeacherSurname" forKey:@"name"];
-//    { NSError *error = nil;
-//        if ([[self managedObjectContext] save:&error] == NO) {
-//            NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], error.userInfo);
-//        }
-//    }
-}
-
 #pragma mark - Fetched results controller
 
 - (NSFetchedResultsController<NSManagedObject *> *)fetchedResultsController {
@@ -162,25 +155,23 @@
         return _fetchedResultsController;
     }
 
-    NSFetchRequest<NSManagedObject *> *fetchRequest = TeacherMO.fetchRequest;
+    NSFetchRequest<NSManagedObject *> *fetchRequest = OBJECT_CLASS.fetchRequest;
+    [fetchRequest setFetchBatchSize:BATCH_SIZE];
 
-    // Set the batch size to a suitable number.
-    [fetchRequest setFetchBatchSize:20];
-
-    // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
-
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:OBJECT_KEY ascending:YES];
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
 
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController<NSManagedObject *> *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
+    NSFetchedResultsController<NSManagedObject *> *aFetchedResultsController = [[NSFetchedResultsController alloc]
+                                                                                initWithFetchRequest:fetchRequest
+                                                                                managedObjectContext:self.managedObjectContext
+                                                                                sectionNameKeyPath:nil
+                                                                                cacheName:@"Master"];
     aFetchedResultsController.delegate = self;
 
     NSError *error = nil;
     if (![aFetchedResultsController performFetch:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
         NSLog(@"Unresolved error %@, %@", error, error.userInfo);
         abort();
     }
