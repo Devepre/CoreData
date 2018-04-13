@@ -5,7 +5,7 @@
 #import "CoreData+CoreDataModel.h"
 @class NSFetchedResultsController;
 
-@interface MasterViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface UniversityListViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
 @property (weak, nonatomic) id<DataDelegate> delegate;
 

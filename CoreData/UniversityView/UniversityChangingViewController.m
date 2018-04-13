@@ -1,4 +1,4 @@
-#import "ChangingViewController.h"
+#import "UniversityChangingViewController.h"
 #import "DataController.h"
 
 #define OBJECT_CLASS UniversityMO
@@ -6,11 +6,11 @@
 #define OBJECT_KEY @"name"
 #define BATCH_SIZE 20
 
-@interface ChangingViewController ()
+@interface UniversityChangingViewController ()
 
 @end
 
-@implementation ChangingViewController
+@implementation UniversityChangingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

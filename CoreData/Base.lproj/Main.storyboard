@@ -87,7 +87,7 @@
         <!--Universities-->
         <scene sceneID="hiz-CH-MWN">
             <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="Rc8-kV-c7v" customClass="MasterViewController" sceneMemberID="viewController">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="Rc8-kV-c7v" customClass="UniversityListViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="htA-et-aiV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -132,7 +132,7 @@
         <!--Editing-->
         <scene sceneID="iu8-7Q-hlE">
             <objects>
-                <tableViewController id="hdD-QX-sX6" customClass="ChangingViewController" sceneMemberID="viewController">
+                <tableViewController id="hdD-QX-sX6" customClass="UniversityChangingViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2X6-Rg-r9y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

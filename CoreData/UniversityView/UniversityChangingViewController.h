@@ -3,7 +3,7 @@
 #import "CoreData+CoreDataModel.h"
 @class NSFetchedResultsController;
 
-@interface ChangingViewController : UITableViewController <UITextFieldDelegate, NSFetchedResultsControllerDelegate>
+@interface UniversityChangingViewController : UITableViewController <UITextFieldDelegate, NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) NSManagedObjectContext    *managedObjectContext;
 @property (weak, nonatomic) IBOutlet UITextField        *nameField;

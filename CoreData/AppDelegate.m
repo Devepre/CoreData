@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "MasterViewController.h"
+#import "UniversityListViewController.h"
 #import "CourseListViewController.h"
 #import "DataController.h"
 
@@ -30,7 +30,7 @@
     detailViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem;
     
     UINavigationController *leftNavigationController = [splitViewController.viewControllers firstObject];
-    MasterViewController *masterViewController = (MasterViewController *)leftNavigationController.topViewController;
+    UniversityListViewController *masterViewController = (UniversityListViewController *)leftNavigationController.topViewController;
     
     masterViewController.delegate = detailViewController;
     

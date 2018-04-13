@@ -1,4 +1,4 @@
-#import "MasterViewController.h"
+#import "UniversityListViewController.h"
 #import "CourseListViewController.h"
 #import "DataController.h"
 
@@ -7,11 +7,11 @@
 #define OBJECT_KEY @"name"
 #define BATCH_SIZE 20
 
-@interface MasterViewController ()
+@interface UniversityListViewController ()
 
 @end
 
-@implementation MasterViewController
+@implementation UniversityListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
