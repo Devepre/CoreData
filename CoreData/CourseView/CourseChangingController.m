@@ -32,12 +32,12 @@
 - (IBAction)doneAction:(UIBarButtonItem *)sender {
     NSLog(@"%@", self.nameField.text);
     
-    [self insertNewObjectWithName:self.nameField.text];
+    [self insertNewObjectWithName:self.nameField.text andBranchName:self.branchField.text];
 }
 
 #pragma mark - Additional Methods
 
-- (void)insertNewObjectWithName:(NSString *)name {
+- (void)insertNewObjectWithName:(NSString *)name andBranchName:(NSString*)branchName{
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc]
                                     initWithEntityName:OBJECT_CLASS_STRING];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name = %@ AND belongsToUniversity = %@ ", name, self.currentObject];
@@ -58,6 +58,7 @@
         OBJECT_CLASS *newManagedObject = [[OBJECT_CLASS alloc] initWithContext:self.managedObjectContext];
         
         newManagedObject.name = name;
+        newManagedObject.branch = branchName;
         newManagedObject.belongsToUniversity = self.currentObject;
         
         // Save the context

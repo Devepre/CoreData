@@ -23,7 +23,7 @@
     </entity>
     <entity name="University" representedClassName="UniversityMO" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="hasCourse" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Course" inverseName="belongsToUniversity" inverseEntity="Course" syncable="YES"/>
+        <relationship name="hasCourse" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Course" inverseName="belongsToUniversity" inverseEntity="Course" syncable="YES"/>
     </entity>
     <elements>
         <element name="Course" positionX="-470" positionY="-9" width="128" height="133"/>

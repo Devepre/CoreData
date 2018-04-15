@@ -11,6 +11,7 @@
     // Do any additional setup after loading the view.
     
     self.courseNameLabel.text = [self.currentObject valueForKey:@"name"];
+    self.branchNameLabel.text = [self.currentObject valueForKey:@"branch"];
     self.universityNameLabel.text = [self.currentObject valueForKeyPath:@"belongsToUniversity.name"];
 }
 
