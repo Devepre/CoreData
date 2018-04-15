@@ -2,7 +2,7 @@
 #import <CoreData/CoreData.h>
 #import "CoreData+CoreDataModel.h"
 
-@interface CourseDetailsViewController : UIViewController
+@interface CourseDetailsViewController : UITableViewController
 
 @property (nonatomic, strong) NSManagedObject           *currentObject;
 
