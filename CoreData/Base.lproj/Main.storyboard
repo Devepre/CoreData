@@ -129,7 +129,7 @@
             </objects>
             <point key="canvasLocation" x="866" y="-619"/>
         </scene>
-        <!--Editing-->
+        <!--Adding University-->
         <scene sceneID="iu8-7Q-hlE">
             <objects>
                 <tableViewController id="hdD-QX-sX6" customClass="UniversityChangingViewController" sceneMemberID="viewController">
@@ -156,7 +156,7 @@
                                                         <outlet property="delegate" destination="hdD-QX-sX6" id="xSK-nz-5Pz"/>
                                                     </connections>
                                                 </textField>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="198" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nmae:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qec-Ek-IbP">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="198" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qec-Ek-IbP">
                                                     <rect key="frame" x="16" y="11" width="50" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -180,7 +180,7 @@
                             <outlet property="delegate" destination="hdD-QX-sX6" id="Y4W-FS-krU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Editing" id="oqt-ym-827">
+                    <navigationItem key="navigationItem" title="Adding University" id="oqt-ym-827">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="TSm-XK-FAW">
                             <connections>
                                 <action selector="doneAction:" destination="hdD-QX-sX6" id="ymL-O1-qhs"/>
@@ -242,7 +242,7 @@
             </objects>
             <point key="canvasLocation" x="-87" y="166"/>
         </scene>
-        <!--Editing-->
+        <!--Adding Course-->
         <scene sceneID="gPz-ZK-r4U">
             <objects>
                 <tableViewController id="5AF-RD-g93" customClass="CourseChangingController" sceneMemberID="viewController">
@@ -269,7 +269,7 @@
                                                         <outlet property="delegate" destination="5AF-RD-g93" id="fxG-Qj-602"/>
                                                     </connections>
                                                 </textField>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="198" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nmae:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1h-il-w2p">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="198" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1h-il-w2p">
                                                     <rect key="frame" x="16" y="11" width="50" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -293,7 +293,7 @@
                             <outlet property="delegate" destination="5AF-RD-g93" id="1fP-Wu-SQF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Editing" id="E23-9J-hNT">
+                    <navigationItem key="navigationItem" title="Adding Course" id="E23-9J-hNT">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="clU-2z-XBg">
                             <connections>
                                 <action selector="doneAction:" destination="5AF-RD-g93" id="q16-ed-h3A"/>

@@ -29,9 +29,9 @@
 #pragma mark - Actions
 
 - (IBAction)doneAction:(UIBarButtonItem *)sender {
-    NSLog(@"%@", self.nameField.text);
-    
-    [self insertNewObjectWithName:self.nameField.text];
+    if (self.nameField.text && ![self.nameField.text isEqualToString:@""]) {
+        [self insertNewObjectWithName:self.nameField.text];
+    }
 }
 
 #pragma mark - Additional Methods
